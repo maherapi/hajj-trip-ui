@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FunctionComponent } from "react";
+import { Circle } from "./components";
+import "./App.scss";
+import { LocalizationProvider } from "@mui/lab";
+import AdapterDayjs from "@mui/lab/AdapterDayjs";
+import { Dayjs } from "dayjs";
 
-function App() {
+interface Props {}
+
+const App: FunctionComponent<Props> = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <div className="App-root">
+        <div
+          style={{
+            position: "fixed",
+            top: "50px",
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Circle>الحرم</Circle>
+          <Circle>مكة</Circle>
+          <Circle>منى</Circle>
+          <Circle>الجمرات</Circle>
+          <Circle>عرفات</Circle>
+          <Circle>مزدلفة</Circle>
+        </div>
+
+        <div
+          id="line"
+          style={{ height: "150px", width: "100%", border: "1px solid black" }}
+        ></div>
+      </div>
+    </LocalizationProvider>
   );
-}
+};
 
 export default App;
